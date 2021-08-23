@@ -1,0 +1,35 @@
+<div fxLayout="column">
+    <div>
+        <h1>Buscador de películas</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxLayout="column">
+        <h3>Buscador</h3>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input  type="text" 
+                    placeholder="Busca tu película" 
+                    aria-label="Number" 
+                    matInput 
+                    [(ngModel)]="termino"
+                    (input)="buscando()"
+                    [matAutocomplete]="auto">
+            <mat-autocomplete   autoActiveFirstOption
+                                #auto="matAutocomplete"
+                                (optionSelected)="opcionSeleccionada( $event )">
+                <mat-option *ngFor="let pelicula of peliculas" [value]="pelicula">
+                    {{ pelicula.title }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center">
+    <div fxFlex="30" fxFlex.lg="20" fxFlex.sm="50" *ngFor="let pelicula of peliculas">
+        <app-pelicula-tarjeta [pelicula]="pelicula"></app-pelicula-tarjeta>
+    </div>
+</div>

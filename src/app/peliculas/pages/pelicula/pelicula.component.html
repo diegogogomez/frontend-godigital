@@ -1,0 +1,39 @@
+<mat-grid-list cols="1" *ngIf="!pelicula; else divPelicula">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divPelicula>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="30px">
+
+         <div fxFlex="50">
+             <h1>{{ pelicula.release_date }}<small></small></h1>
+             <mat-divider></mat-divider>
+             <br>
+
+             <img mat-card-image src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}">
+             
+         </div>
+         
+         <div fxFlex="50">
+            <h1>{{ pelicula.title }}</h1>
+            <mat-divider></mat-divider>
+            <div>
+                <mat-list>
+                    {{ pelicula.overview }}
+                </mat-list>
+            </div>
+
+            <button mat-button
+                    color="warn"
+                    (click)="regresar()">
+                Regresar
+            </button>
+
+         </div>
+
+    </div>
+</ng-template>

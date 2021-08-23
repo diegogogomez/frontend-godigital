@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3><strong>{{ pelicula.title }}</strong></h3>
+        </mat-card-title>
+        <mat-card-subtitle>{{ pelicula.release_date }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image src="https://image.tmdb.org/t/p/w500{{ pelicula.backdrop_path }}">
+
+    <mat-card-content>
+        <h4>{{ pelicula.overview }}</h4>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button color="warn" [routerLink]="['/peliculas', pelicula.id]">
+            Leer mas...
+        </button>
+        <button mat-button color="primary">Rating: {{ pelicula.vote_average }}</button>
+    </mat-card-actions>
+
+</mat-card>
